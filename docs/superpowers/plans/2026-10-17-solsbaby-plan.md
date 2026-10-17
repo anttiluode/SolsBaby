@@ -36,12 +36,12 @@ decoder measure readout from one soma; the GUI and reports use the same model.
 `Medium.step(state, excitation, current=None, write=True) -> State`;
 `Medium.transfer(tag, frequencies) -> complex array`.
 
-- [ ] Write and run failing mathematical tests for the interfaces above.
-- [ ] Implement seeded geometry, O(N) implicit tree solve, optional active
+- [x] Write and run failing mathematical tests for the interfaces above.
+- [x] Implement seeded geometry, O(N) implicit tree solve, optional active
   conductance, exact bounded local tag update, and independent state copying/reset.
-- [ ] Check dense-solve agreement, passive energy, conservation, history response,
+- [x] Check dense-solve agreement, passive energy, conservation, history response,
   boundedness, malformed input, and display-pose invariance.
-- [ ] Run `python -m unittest discover -s tests -v`; commit working medium.
+- [x] Run `python -m unittest discover -s tests -v`; commit working medium.
 
 ### Task 2: Memory protocol and controls
 
@@ -51,12 +51,12 @@ decoder measure readout from one soma; the GUI and reports use the same model.
 **Produces:** `run_benchmark(protocol) -> dict`; `walkthrough(seed) -> dict`;
 `RidgeReader.fit(x,y)` and `.predict(x)` with training-only preprocessing.
 
-- [ ] Write and run failing tests for deterministic independent episodes,
+- [x] Write and run failing tests for deterministic independent episodes,
   reader isolation, reset controls, read-only slow decay, and invalid protocols.
-- [ ] Commit protocol, then implement batched pulse/write/wait/probe episodes,
+- [x] Commit protocol, then implement batched pulse/write/wait/probe episodes,
   one-soma sampling, ridge reader, controls, metrics, and state oracle.
-- [ ] Run the full suite and the declared multi-seed benchmark; retain failures.
-- [ ] Record measurements and commit.
+- [x] Run the full suite and the declared multi-seed benchmark; retain failures.
+- [x] Record measurements and commit.
 
 ### Task 3: Runnable demo, reports, and delivery
 
@@ -66,9 +66,9 @@ decoder measure readout from one soma; the GUI and reports use the same model.
 **Consumes:** Tasks 1 and 2; no alternative simulator in the UI.
 **Produces:** GUI, CLI, JSON/PNG report, reproducible usage instructions.
 
-- [ ] Add CLI integration tests covering missing display, invalid arguments,
+- [x] Add CLI integration tests covering missing display, invalid arguments,
   serialized results, and paths containing spaces; watch failures.
-- [ ] Implement the visual teach/probe/reset flow and headless reporting.
-- [ ] Run full suite, headless walkthrough, installation and GUI smoke checks.
-- [ ] Review the complete branch, resolve important findings, verify again,
+- [x] Implement the visual teach/probe/reset flow and headless reporting.
+- [x] Run full suite, headless walkthrough, installation and GUI smoke checks.
+- [x] Review the complete branch, resolve important findings, verify again,
   and publish the tested implementation to the requested repository.

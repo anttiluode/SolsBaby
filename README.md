@@ -117,4 +117,7 @@ Related projects: [Sihti](https://github.com/anttiluode/Sihti),
 [VMN](https://github.com/anttiluode/VMN), and
 [Operaattori](https://github.com/anttiluode/Operaattori).
 
+Verification: mathematical/CLI suites and the registered gate pass in GitHub CI
+on Python 3.10, 3.12, and 3.13. A real Tk desktop smoke test passes under Xvfb.
+
 MIT license.
