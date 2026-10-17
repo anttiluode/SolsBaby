@@ -84,6 +84,18 @@ class ProtocolTests(unittest.TestCase):
         self.assertEqual(d['learned']['trace'].shape, d['erased']['trace'].shape)
         self.assertEqual(d['learned']['frames'].shape[1], d['medium'].morphology.n)
 
+    def test_new_experience_can_accumulate_without_erasing_past_tags(self):
+        from solsbaby.experiment import EpisodeBatch
+        p = Protocol(train_per_class=1, test_per_class=1)
+        medium = Medium(Genome().grow())
+        previous = medium.initial()
+        previous.tag[0, medium.morphology.tips[0]] = .8
+        batch = EpisodeBatch(np.array([1]), np.ones(1), np.zeros(1, dtype=int))
+        after = expose(medium, batch, p, initial_state=previous)
+        self.assertGreater(after.tag[0, medium.morphology.tips[0]], .7)
+        self.assertGreater(after.tag[0, medium.morphology.tips[1]], .2)
+        self.assertEqual(previous.tag[0, medium.morphology.tips[0]], .8)
+
 
 if __name__ == '__main__':
     unittest.main()

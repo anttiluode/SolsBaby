@@ -1,0 +1,25 @@
+{
+  "name": "SolsBaby v1 \u2014 somatic read of a learned shunt",
+  "seeds": [
+    3,
+    11,
+    29,
+    47
+  ],
+  "branches": 4,
+  "segments": 5,
+  "train_per_class": 32,
+  "test_per_class": 32,
+  "write_steps": 120,
+  "wait_steps": 200,
+  "slot_steps": 60,
+  "sample_stride": 3,
+  "context_amplitude": 3.0,
+  "probe_amplitude": 0.35,
+  "noise_std": 0.0002,
+  "ridge": 1.0,
+  "active_strength": 0.0,
+  "gate_mean_accuracy": 0.8,
+  "gate_min_seed_accuracy": 0.65,
+  "gate_max_control_accuracy": 0.37
+}

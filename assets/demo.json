@@ -1,0 +1,10 @@
+{
+  "seed": 3,
+  "branch": 0,
+  "active_strength": 0.0,
+  "relative_response_change": 0.25739259022270616,
+  "slow_tag_max": 0.7517867336668802,
+  "fast_voltage_max": 0.0,
+  "units": "dimensionless",
+  "protocol_sha256": "17dd8bf5bafa17ca3a947af23767141f5d78ce18dafc5a3d59184c979d566d69"
+}

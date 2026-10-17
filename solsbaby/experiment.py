@@ -74,14 +74,16 @@ def generate_batch(protocol, seed, split):
     return EpisodeBatch(labels, rng.uniform(.8, 1.2, len(labels)), rng.integers(0, 6, len(labels)))
 
 
-def expose(medium, batch, protocol, frames=None):
+def expose(medium, batch, protocol, frames=None, initial_state=None):
     """Local writing during three pulses; decay-only washout; clear voltage.
 
 The labels choose where an external experience arrives. They are never passed
 to Medium.step or included in state. Optional frames record episode zero.
 """
     m = medium.morphology
-    state = medium.initial(batch=len(batch.labels))
+    state = medium.initial(batch=len(batch.labels)) if initial_state is None else initial_state.copy()
+    if state.v.shape != (len(batch.labels), m.n):
+        raise ValueError('initial state must match the exposure batch')
     indices = np.arange(len(batch.labels))
     tips = m.tips[batch.labels]
     for t in range(protocol.write_steps):
