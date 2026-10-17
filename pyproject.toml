@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "solsbaby"
+version = "0.1.0"
+description = "An inspectable dendritic medium: experience changes the response operator"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+dependencies = ["numpy>=1.24", "matplotlib>=3.6"]
+
+[project.scripts]
+solsbaby = "solsbaby.__main__:main"
+
+[tool.setuptools.packages.find]
+include = ["solsbaby*"]
