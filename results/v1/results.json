@@ -1,6 +1,6 @@
 {
   "protocol": {
-    "name": "SolsBaby v1 — somatic read of a learned shunt",
+    "name": "SolsBaby v1 \u2014 somatic read of a learned shunt",
     "seeds": [
       3,
       11,
@@ -15,11 +15,11 @@
     "wait_steps": 200,
     "slot_steps": 60,
     "sample_stride": 3,
-    "context_amplitude": 3,
+    "context_amplitude": 3.0,
     "probe_amplitude": 0.35,
     "noise_std": 0.0002,
-    "ridge": 1,
-    "active_strength": 0,
+    "ridge": 1.0,
+    "active_strength": 0.0,
     "gate_mean_accuracy": 0.8,
     "gate_min_seed_accuracy": 0.65,
     "gate_max_control_accuracy": 0.37
@@ -27,9 +27,9 @@
   "protocol_sha256": "9fef91a97b298c6223b775ac476e9e1091841680f6e25fb5f4ee65be5ffb5ca7",
   "summary": {
     "learned_soma": {
-      "mean": 1,
-      "min": 1,
-      "max": 1
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0
     },
     "frozen_writer": {
       "mean": 0.25,
@@ -47,20 +47,20 @@
       "max": 0.453125
     },
     "slow_state_oracle": {
-      "mean": 1,
-      "min": 1,
-      "max": 1
+      "mean": 1.0,
+      "min": 1.0,
+      "max": 1.0
     }
   },
   "trials": [
     {
       "seed": 3,
       "accuracy": {
-        "learned_soma": 1,
+        "learned_soma": 1.0,
         "frozen_writer": 0.2265625,
         "erased_memory": 0.2109375,
         "shuffled_labels": 0.140625,
-        "slow_state_oracle": 1
+        "slow_state_oracle": 1.0
       },
       "predictions": {
         "learned_soma": [
@@ -980,17 +980,17 @@
       "clean_soma_peak": 0.04569054587273799,
       "memory_effect_rms": 0.009462643237540739,
       "slow_tag_max": 0.766196603708392,
-      "fast_voltage_before_probe_max": 0,
+      "fast_voltage_before_probe_max": 0.0,
       "seconds": 0.8705632499995772
     },
     {
       "seed": 11,
       "accuracy": {
-        "learned_soma": 1,
+        "learned_soma": 1.0,
         "frozen_writer": 0.28125,
         "erased_memory": 0.203125,
         "shuffled_labels": 0.3828125,
-        "slow_state_oracle": 1
+        "slow_state_oracle": 1.0
       },
       "predictions": {
         "learned_soma": [
@@ -1910,17 +1910,17 @@
       "clean_soma_peak": 0.04453402316938133,
       "memory_effect_rms": 0.008956593177192064,
       "slow_tag_max": 0.7694797010591602,
-      "fast_voltage_before_probe_max": 0,
+      "fast_voltage_before_probe_max": 0.0,
       "seconds": 0.8030446040002062
     },
     {
       "seed": 29,
       "accuracy": {
-        "learned_soma": 1,
+        "learned_soma": 1.0,
         "frozen_writer": 0.265625,
         "erased_memory": 0.1796875,
         "shuffled_labels": 0.203125,
-        "slow_state_oracle": 1
+        "slow_state_oracle": 1.0
       },
       "predictions": {
         "learned_soma": [
@@ -2840,17 +2840,17 @@
       "clean_soma_peak": 0.04863701111083632,
       "memory_effect_rms": 0.009584860203277284,
       "slow_tag_max": 0.7712196970286234,
-      "fast_voltage_before_probe_max": 0,
+      "fast_voltage_before_probe_max": 0.0,
       "seconds": 0.7845666650000567
     },
     {
       "seed": 47,
       "accuracy": {
-        "learned_soma": 1,
+        "learned_soma": 1.0,
         "frozen_writer": 0.2265625,
         "erased_memory": 0.25,
         "shuffled_labels": 0.453125,
-        "slow_state_oracle": 1
+        "slow_state_oracle": 1.0
       },
       "predictions": {
         "learned_soma": [
@@ -3770,7 +3770,7 @@
       "clean_soma_peak": 0.045214668112246365,
       "memory_effect_rms": 0.008635498726715032,
       "slow_tag_max": 0.7679837347077271,
-      "fast_voltage_before_probe_max": 0,
+      "fast_voltage_before_probe_max": 0.0,
       "seconds": 0.8137068300002284
     }
   ],
@@ -3791,7 +3791,7 @@
     "somatic_samples_per_read": 80,
     "probe_steps": 240,
     "integration_steps_per_read_with_blank": 480,
-    "class_label_information_bits": 2
+    "class_label_information_bits": 2.0
   },
   "seconds": 3.2723294049992546,
   "source_commit": "932b28dff564f392c496c2810ac49205368dd131",
