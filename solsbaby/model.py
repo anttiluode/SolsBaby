@@ -29,8 +29,8 @@ class Parameters:
             raise ValueError('dt must be in (0, 1]')
         if self.tag_tau <= 0 or self.active_width <= 0 or self.reversal <= 0:
             raise ValueError('time constant, active width and reversal must be positive')
-        if min(self.memory_strength, self.tag_rate, self.active_strength, self.tag_threshold) < 0:
-            raise ValueError('conductance strengths, tag rate and threshold must be nonnegative')
+        if min(self.memory_strength, self.tag_rate, self.active_strength, self.tag_threshold, self.active_threshold) < 0:
+            raise ValueError('conductance strengths, tag rate and thresholds must be nonnegative')
 
 
 @dataclass
@@ -78,6 +78,24 @@ class Medium:
         self.parameters = parameters or Parameters()
         self.parameters.validate()
         m = morphology
+        if not isinstance(m.parent, np.ndarray) or m.parent.ndim != 1:
+            raise ValueError('parent indices must be a one-dimensional integer array')
+        for name in ('parent', 'branch', 'depth'):
+            a = getattr(m, name)
+            if not isinstance(a, np.ndarray) or a.shape != (m.n,) or not np.issubdtype(a.dtype, np.integer):
+                raise ValueError(f'{name} must be an integer vector with one entry per compartment')
+        for name in ('axial', 'capacitance', 'leak', 'length', 'diameter'):
+            a = getattr(m, name)
+            if not isinstance(a, np.ndarray) or a.shape != (m.n,) or np.any(~np.isfinite(a)):
+                raise ValueError(f'{name} must be a finite vector with one entry per compartment')
+        if not isinstance(m.xy, np.ndarray) or m.xy.shape != (m.n, 2) or np.any(~np.isfinite(m.xy)):
+            raise ValueError('display coordinates must have finite shape (compartments, 2)')
+        if (not isinstance(m.tips, np.ndarray) or m.tips.ndim != 1 or not len(m.tips)
+                or not np.issubdtype(m.tips.dtype, np.integer)
+                or np.any((m.tips < 1) | (m.tips >= m.n)) or len(np.unique(m.tips)) != len(m.tips)):
+            raise ValueError('tips must be distinct integer compartment indices excluding the root')
+        if np.any((m.branch < -1) | (m.branch >= len(m.tips))) or np.any(m.depth < 0):
+            raise ValueError('branch/depth indices are outside the generated morphology')
         if m.n < 2 or m.parent[0] != -1 or np.any(m.parent[1:] < 0) or np.any(m.parent[1:] >= np.arange(1, m.n)):
             raise ValueError('morphology must be a topologically ordered rooted tree')
         for a in (m.capacitance, m.leak, m.axial[1:]):

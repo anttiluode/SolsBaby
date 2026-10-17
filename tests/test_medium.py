@@ -154,6 +154,21 @@ class MediumTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 self.medium.step(self.medium.initial(), g)
 
+    def test_negative_active_threshold_is_rejected_before_it_can_make_nans(self):
+        with self.assertRaisesRegex(ValueError, 'threshold'):
+            Medium(self.morph, Parameters(active_strength=1.2, active_threshold=-1.3))
+
+    def test_malformed_morphology_is_rejected_before_broadcast_or_indexing(self):
+        bad = [replace(self.morph, capacitance=np.array([2.5])),
+               replace(self.morph, parent=self.morph.parent.astype(float)),
+               replace(self.morph, tips=self.morph.tips.astype(float)),
+               replace(self.morph, xy=np.zeros((2, 3))),
+               replace(self.morph, branch=np.full(self.morph.n, 99)),
+               replace(self.morph, leak=np.ones((self.morph.n, 1)))]
+        for case, morphology in enumerate(bad):
+            with self.subTest(case=case), self.assertRaises(ValueError):
+                Medium(morphology)
+
 
 if __name__ == '__main__':
     unittest.main()
